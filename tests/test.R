@@ -45,7 +45,8 @@ nhis_personsx_list <-
 			stopifnot( nrow( result ) == nrow( nhis_personsx_df ) )
 			result
 		} )
-		
+
+# personsx design		
 nhis_design <- 
 	svydesign( 
 		id = ~psu_p , 
@@ -89,16 +90,17 @@ nhis_samadult_list <-
 			result
 		} )
 
-rm( nhis_income_list , nhis_personsx_samadult_df , nhis_personsx_samadult_df ) ; gc()
-		
-nhis_samadult_design <- 
-	svydesign( 
-		id = ~psu_p , 
-		strata = ~strat_p ,
-		nest = TRUE ,
-		weights = ~wtfa_sa ,
-		data = imputationList( nhis_samadult_list )
-	)
+rm( nhis_income_list , nhis_personsx_samadult_df ) ; gc()
+
+# sample adult design
+# nhis_samadult_design <- 
+	# svydesign( 
+		# id = ~psu_p , 
+		# strata = ~strat_p ,
+		# nest = TRUE ,
+		# weights = ~wtfa_sa ,
+		# data = imputationList( nhis_samadult_list )
+	# )
 	
 rm( nhis_samadult_list ) ; gc()
 nhis_design <- 
