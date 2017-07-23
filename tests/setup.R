@@ -7,7 +7,7 @@ nhis_cat <-
 		output_dir = file.path( getwd() ) )
 
 # sample 50% of the records
-which_records <- sample( seq( nrow( nhis_cat ) ) , round( nrow( nhis_cat ) * 0.50 ) )
+which_records <- sample( seq( nrow( nhis_cat ) ) , round( nrow( nhis_cat ) * 0.25 ) )
 
 # always sample year == 2015
 nhis_cat <- unique( rbind( nhis_cat[ which_records , ] , subset( nhis_cat , year == 2015 ) ) )
