@@ -55,6 +55,8 @@ nhis_design <-
 		data = imputationList( nhis_personsx_list )
 	)
 
+rm( nhis_personsx_list ) ; gc()
+
 nhis_samadult_df <- 
 	readRDS( file.path( getwd() , "2015/samadult.rds" ) )
 
@@ -75,6 +77,8 @@ nhis_personsx_samadult_df <-
 
 stopifnot( nrow( nhis_personsx_samadult_df ) == nrow( nhis_samadult_df ) )
 
+rm( nhis_personsx_df , nhis_samadult_df ) ; gc()
+
 nhis_samadult_list <-
 	lapply( nhis_income_list ,
 		function( w ){
@@ -84,6 +88,8 @@ nhis_samadult_list <-
 			stopifnot( nrow( result ) == nrow( nhis_personsx_samadult_df ) )
 			result
 		} )
+
+rm( nhis_income_list , nhis_personsx_samadult_df , nhis_personsx_samadult_df ) ; gc()
 		
 nhis_samadult_design <- 
 	svydesign( 
@@ -93,6 +99,8 @@ nhis_samadult_design <-
 		weights = ~wtfa_sa ,
 		data = imputationList( nhis_samadult_list )
 	)
+	
+rm( nhis_samadult_list ) ; gc()
 nhis_design <- 
 	update( 
 		nhis_design , 
