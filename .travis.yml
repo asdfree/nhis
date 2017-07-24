@@ -14,7 +14,22 @@ script:
     
 after_failure:
 - find *Rcheck -name '*.fail' -print -exec cat '{}' \;
+# show memory usage again
+- sudo free -m -t
+# show actions of the OOM killer
+- sudo dmesg
 
 r_github_packages:
  - jimhester/archive
  - ajdamico/lodown
+
+ 
+before_install:
+# shutdown servies on Travis, which may have a memory impact
+# show memory usage before and after shutdown of services
+- sudo service --status-all
+- sudo free -m -t
+- sudo /etc/init.d/mysql stop
+- sudo /etc/init.d/postgresql stop
+- sudo free -m -t
+
