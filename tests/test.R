@@ -38,7 +38,7 @@ inc_vars_to_keep <-
 
 # personsx variables to keep
 vars_to_keep <- 
-	c( merge_variables , "psu_p" , "strat_p" , "wtfa" ,
+	c( merge_variables , "ppsu" , "pstrat" , "wtfa" ,
 		'phstat' , 'sex' , 'hospno' , 'age_p' , 'hinotmyr' , 'notcov' )
 
 nhis_personsx_df <- nhis_personsx_df[ vars_to_keep ]
@@ -56,8 +56,8 @@ nhis_personsx_list <-
 # personsx design		
 nhis_design <- 
 	svydesign( 
-		id = ~psu_p , 
-		strata = ~strat_p ,
+		id = ~ppsu , 
+		strata = ~pstrat ,
 		nest = TRUE ,
 		weights = ~wtfa ,
 		data = imputationList( nhis_personsx_list )
@@ -102,8 +102,8 @@ rm( nhis_income_list , nhis_personsx_samadult_df ) ; gc()
 # sample adult design (commented out)
 # nhis_samadult_design <- 
 	# svydesign( 
-		# id = ~psu_p , 
-		# strata = ~strat_p ,
+		# id = ~ppsu , 
+		# strata = ~pstrat ,
 		# nest = TRUE ,
 		# weights = ~wtfa_sa ,
 		# data = imputationList( nhis_samadult_list )
