@@ -6,8 +6,8 @@ nhis_cat <-
 	get_catalog( "nhis" ,
 		output_dir = file.path( getwd() ) )
 
-# 2015 only
-nhis_cat <- subset( nhis_cat , year == 2015 )
+# 2016 only
+nhis_cat <- subset( nhis_cat , year == 2016 )
 # download the microdata to your local computer
 stopifnot( nrow( nhis_cat ) > 0 )
 
@@ -17,10 +17,10 @@ library(survey)
 library(mitools)
 
 nhis_personsx_df <- 
-	readRDS( file.path( getwd() , "2015/personsx.rds" ) )
+	readRDS( file.path( getwd() , "2016/personsx.rds" ) )
 
 nhis_income_list <- 
-	readRDS( file.path( getwd() , "2015/incmimp.rds" ) )
+	readRDS( file.path( getwd() , "2016/incmimp.rds" ) )
 
 merge_variables <- c( "hhx" , "fmx" , "fpx" )
 
@@ -66,7 +66,7 @@ nhis_design <-
 rm( nhis_personsx_list ) ; gc()
 
 nhis_samadult_df <- 
-	readRDS( file.path( getwd() , "2015/samadult.rds" ) )
+	readRDS( file.path( getwd() , "2016/samadult.rds" ) )
 
 nhis_samadult_df[ merge_variables ] <- 
 	sapply( nhis_samadult_df[ merge_variables ] , as.numeric )
