@@ -6,7 +6,7 @@ nhis_cat <-
 	get_catalog( "nhis" ,
 		output_dir = file.path( getwd() ) )
 
-# sample 50% of the records
+# sample 25% of the records
 which_records <- sample( seq( nrow( nhis_cat ) ) , round( nrow( nhis_cat ) * 0.25 ) )
 
 # always sample year == 2016
