@@ -44,4 +44,8 @@ artifacts:
 environment:
     USE_RTOOLS: true
     R_ARCH: x64
-# this_build_matrix
+    matrix:
+    - this_sample_break: 1
+    - this_sample_break: 2
+    - this_sample_break: 3
+    - this_sample_break: 4
