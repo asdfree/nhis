@@ -1,5 +1,6 @@
 if ( .Platform$OS.type == 'windows' ) memory.limit( 256000 )
 
+library(lodown)
 this_sample_break <- Sys.getenv( "this_sample_break" )
 nhis_cat <- get_catalog( "nhis" , output_dir = file.path( getwd() ) )
 record_categories <- ceiling( seq( nrow( nhis_cat ) ) / ceiling( nrow( nhis_cat ) / 4 ) )
