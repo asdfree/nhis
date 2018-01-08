@@ -1,7 +1,5 @@
 if ( .Platform$OS.type == 'windows' ) memory.limit( 256000 )
 
-library(lodown)
-lodown( "nhis" , output_dir = file.path( getwd() ) )
 this_sample_break <- Sys.getenv( "this_sample_break" )
 nhis_cat <- get_catalog( "nhis" , output_dir = file.path( getwd() ) )
 record_categories <- ceiling( seq( nrow( nhis_cat ) ) / ceiling( nrow( nhis_cat ) / 4 ) )
@@ -17,7 +15,7 @@ nhis_cat <-
 # 2016 only
 nhis_cat <- subset( nhis_cat , year == 2016 )
 # download the microdata to your local computer
-lodown( "nhis" , nhis_cat )
+
 
 options( survey.lonely.psu = "adjust" )
 
