@@ -4,7 +4,7 @@ Title: nhis
 Version: 0.1.0
 Author: Anthony Joseph Damico
 Maintainer: Anthony Joseph Damico <ajdamico@gmail.com>
-Description: A continuous integration package, tested on ajdamico/asdfree commit 0533fdae6ae71d4517fc9e8148495c1099dd57c6 ajdamico/lodown commit 46e436d64a5934789d57734f6bbf246737f0c593
+Description: A continuous integration package, tested on ajdamico/asdfree commit 0533fdae6ae71d4517fc9e8148495c1099dd57c6 ajdamico/lodown commit f31cd1679bfa91c7c7c1cb23840fe677a8d2d879
 License: GPL-3
 Imports: survey, mitools, lodown
 Encoding: UTF-8
