@@ -7,17 +7,17 @@ this_sample_break <- Sys.getenv( "this_sample_break" )
 nhis_cat <- get_catalog( "nhis" , output_dir = file.path( getwd() ) )
 record_categories <- ceiling( seq( nrow( nhis_cat ) ) / ceiling( nrow( nhis_cat ) / 4 ) )
 nhis_cat <- nhis_cat[ record_categories == this_sample_break , ]
-lodown( "nhis" , nhis_cat )
+nhis_cat <- lodown( "nhis" , nhis_cat )
 if( any( nhis_cat$year == 2016 ) ){
-library(lodown)
-# examine all available NHIS microdata files
-nhis_cat <-
-	get_catalog( "nhis" ,
-		output_dir = file.path( getwd() ) )
 
-# 2016 only
-nhis_cat <- subset( nhis_cat , year == 2016 )
-# download the microdata to your local computer
+
+
+
+
+
+
+
+
 
 
 options( survey.lonely.psu = "adjust" )
