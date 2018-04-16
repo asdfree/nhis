@@ -210,10 +210,10 @@ MIcombine( with( nhis_design ,
 MIcombine( with( nhis_design ,
 	svymean( ~ age_p , deff = "replace" )
 ) )
-lodown:::MIsvyciprop( ~ fair_or_poor_reported_health , nhis_design ,
+MIsvyciprop( ~ fair_or_poor_reported_health , nhis_design ,
 	method = "likelihood" , na.rm = TRUE )
-lodown:::MIsvyttest( age_p ~ fair_or_poor_reported_health , nhis_design )
-lodown:::MIsvychisq( ~ fair_or_poor_reported_health + sex , nhis_design )
+MIsvyttest( age_p ~ fair_or_poor_reported_health , nhis_design )
+MIsvychisq( ~ fair_or_poor_reported_health + sex , nhis_design )
 glm_result <- 
 	MIcombine( with( nhis_design ,
 		svyglm( age_p ~ fair_or_poor_reported_health + sex )
