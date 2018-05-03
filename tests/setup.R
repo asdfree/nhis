@@ -168,12 +168,17 @@ MIcombine( with( nhis_design , svytotal( ~ sex ) ) )
 MIcombine( with( nhis_design ,
 	svyby( ~ sex , ~ poverty_category , svytotal )
 ) )
-MIcombine( with( nhis_design , svyquantile( ~ age_p , 0.5 , se = TRUE ) ) )
+MIcombine( with( nhis_design ,
+	svyquantile(
+		~ age_p ,
+		0.5 , se = TRUE 
+) ) )
 
 MIcombine( with( nhis_design ,
-	svyby( 
-		~ age_p , ~ poverty_category , svyquantile , 0.5 ,
-		se = TRUE , keep.var = TRUE , ci = TRUE 
+	svyby(
+		~ age_p , ~ poverty_category , svyquantile ,
+		0.5 , se = TRUE ,
+		keep.var = TRUE , ci = TRUE 
 ) ) )
 MIcombine( with( nhis_design ,
 	svyratio( numerator = ~ hinotmyr , denominator = ~ hospno , na.rm = TRUE )
