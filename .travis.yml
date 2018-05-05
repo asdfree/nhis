@@ -2,7 +2,7 @@
 
 language: r
 cache: packages
-sudo: required
+sudo: false
 apt_packages:
 - unixodbc-dev
 - libarchive-dev
