@@ -120,7 +120,7 @@ MIcombine( with( nhis_design ,
 MIcombine( with( nhis_design ,
 	svyratio( numerator = ~ annual_premium_first_plan , denominator = ~ agep_a , na.rm = TRUE )
 ) )
-sub_nhis_design <- subset( nhis_design , notcov == 1 )
+sub_nhis_design <- subset( nhis_design , notcov_a == 1 )
 MIcombine( with( sub_nhis_design , svymean( ~ agep_a ) ) )
 this_result <-
 	MIcombine( with( nhis_design ,
