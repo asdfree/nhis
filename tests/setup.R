@@ -90,20 +90,20 @@ MIcombine( with( nhis_design , svymean( ~ agep_a ) ) )
 MIcombine( with( nhis_design ,
 	svyby( ~ agep_a , ~ poverty_category , svymean )
 ) )
-MIcombine( with( nhis_design , svymean( ~ sex ) ) )
+MIcombine( with( nhis_design , svymean( ~ sex_a ) ) )
 
 MIcombine( with( nhis_design ,
-	svyby( ~ sex , ~ poverty_category , svymean )
+	svyby( ~ sex_a , ~ poverty_category , svymean )
 ) )
 MIcombine( with( nhis_design , svytotal( ~ agep_a ) ) )
 
 MIcombine( with( nhis_design ,
 	svyby( ~ agep_a , ~ poverty_category , svytotal )
 ) )
-MIcombine( with( nhis_design , svytotal( ~ sex ) ) )
+MIcombine( with( nhis_design , svytotal( ~ sex_a ) ) )
 
 MIcombine( with( nhis_design ,
-	svyby( ~ sex , ~ poverty_category , svytotal )
+	svyby( ~ sex_a , ~ poverty_category , svytotal )
 ) )
 MIcombine( with( nhis_design ,
 	svyquantile(
@@ -155,10 +155,10 @@ MIcombine( with( nhis_design ,
 # MIsvyciprop( ~ fair_or_poor_reported_health , nhis_design ,
 # 	method = "likelihood" , na.rm = TRUE )
 # MIsvyttest( agep_a ~ fair_or_poor_reported_health , nhis_design )
-# MIsvychisq( ~ fair_or_poor_reported_health + sex , nhis_design )
+# MIsvychisq( ~ fair_or_poor_reported_health + sex_a , nhis_design )
 glm_result <- 
 	MIcombine( with( nhis_design ,
-		svyglm( agep_a ~ fair_or_poor_reported_health + sex )
+		svyglm( agep_a ~ fair_or_poor_reported_health + sex_a )
 	) )
 	
 summary( glm_result )
