@@ -23,12 +23,12 @@ nhis_csv_import <-
 
 nhis_df <-
 	nhis_csv_import( 
-		"https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2021/adult21csv.zip" 
+		"https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2024/adult24csv.zip" 
 	)
 
 imputed_income_df <- 
 	nhis_csv_import( 
-		"https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2021/adultinc21csv.zip" 
+		"https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2024/adultinc24csv.zip" 
 	)
 # nhis_fn <- file.path( path.expand( "~" ) , "NHIS" , "this_file.rds" )
 # saveRDS( nhis_df , file = nhis_fn , compress = FALSE )
@@ -165,9 +165,9 @@ summary( glm_result )
 results <-
 	MIcombine( 
 		with(
-			subset( nhis_design , agep_a < 65 ) , 
+			subset( nhis_design , notcov_a %in% 1:2 ) , 
 			svyby(
-				~ as.numeric( rxsk12m_a == 1 | rxls12m_a == 1 | rxdl12m_a == 1 ) , 
+				~ as.numeric( notcov_a == 1 ) , 
 				~ poverty_category , 
 				svymean , 
 				na.rm = TRUE 
@@ -177,13 +177,13 @@ results <-
 
 stopifnot(
 	all(
-		as.numeric( round( coef( results ) , 3 ) ) == c( 0.145 , 0.138 , 0.099 , 0.039 )
+		as.numeric( round( coef( results ) , 4 ) ) == c( 0.1776 , 0.1693 , 0.0994 , 0.0333 )
 	) 
 )
 
 stopifnot(
 	all( 
-		as.numeric( round( SE( results ) , 5 ) ) - c( 0.0126 , 0.0098 , 0.0062 , 0.0031 ) < 0.0001
+		as.numeric( round( SE( results ) , 4 ) ) == c( 0.0096 , 0.0075 , 0.0044 , 0.0022 )
 	) 
 )
 
